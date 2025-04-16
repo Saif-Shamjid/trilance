@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1E5631;
+  --color-secondary: #FF7F11;
+  --color-light: #F5F5DC;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+/* Smooth scrolling fallback */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add scroll margin to all elements with IDs to account for fixed header */
+[id] {
+  scroll-margin-top: 80px;
+}

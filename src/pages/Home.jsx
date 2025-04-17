@@ -1,45 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ArrowRight, Globe, Smartphone, ShoppingCart, BarChart, 
-  Cpu, Database, Wifi, Rocket, TrendingUp, Code2, 
-  LayoutTemplate, SmartphoneCharging
+import {
+  ArrowRight,
+  Globe,
+  Smartphone,
+  ShoppingCart,
+  BarChart,
+  Cpu,
+  Database,
+  Wifi,
+  Rocket,
+  TrendingUp,
+  Code2,
+  LayoutTemplate,
+  SmartphoneCharging,
 } from "lucide-react";
 
-
-
 const processSteps = [
-    {
-      title: "Consultation",
-      description: "Free discovery call to understand your needs",
-      icon: <Wifi className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
-      color: "bg-purple-500"
-    },
-    {
-      title: "Design",
-      description: "Custom UI/UX tailored for your business",
-      icon: <LayoutTemplate className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
-      color: "bg-blue-500"
-    },
-    {
-      title: "Development",
-      description: "Clean, scalable code implementation",
-      icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
-      color: "bg-green-500"
-    },
-    {
-      title: "Deployment",
-      description: "Seamless launch with full support",
-      icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
-      color: "bg-yellow-500"
-    },
-    {
-      title: "Growth",
-      description: "Ongoing optimization & marketing",
-      icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
-      color: "bg-pink-500"
-    }
-  ];
+  {
+    title: "Consultation",
+    description: "Free discovery call to understand your needs",
+    icon: (
+      <Wifi className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+    ),
+    color: "bg-purple-500",
+  },
+  {
+    title: "Design",
+    description: "Custom UI/UX tailored for your business",
+    icon: (
+      <LayoutTemplate className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+    ),
+    color: "bg-blue-500",
+  },
+  {
+    title: "Development",
+    description: "Clean, scalable code implementation",
+    icon: (
+      <Code2 className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+    ),
+    color: "bg-green-500",
+  },
+  {
+    title: "Deployment",
+    description: "Seamless launch with full support",
+    icon: (
+      <Rocket className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+    ),
+    color: "bg-yellow-500",
+  },
+  {
+    title: "Growth",
+    description: "Ongoing optimization & marketing",
+    icon: (
+      <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+    ),
+    color: "bg-pink-500",
+  },
+];
 
 export default function Hero() {
   const [activeStep, setActiveStep] = useState(0);
@@ -54,19 +72,23 @@ export default function Hero() {
 
   // Calculate positions with left adjustment
   const calculatePosition = (index) => {
-    const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    const screenWidth =
+      typeof window !== "undefined" ? window.innerWidth : 1024;
     const radius = screenWidth < 640 ? 100 : screenWidth < 768 ? 130 : 180;
-    const angle = (index * (360 / processSteps.length)) - 90;
+    const angle = index * (360 / processSteps.length) - 90;
     const radians = angle * (Math.PI / 180);
     const leftAdjustment = -40;
     return {
       x: Math.cos(radians) * radius + leftAdjustment,
-      y: Math.sin(radians) * radius - 35
+      y: Math.sin(radians) * radius - 35,
     };
   };
 
   return (
-    <section id="home" className="relative pt-5 min-h-screen flex flex-col lg:flex-row items-center justify-between text-white px-6 md:px-12 lg:px-24 overflow-hidden gap-10 lg:gap-0">
+    <section
+      id="home"
+      className="relative pt-5 min-h-screen flex flex-col lg:flex-row items-center justify-between text-white px-6 md:px-12 lg:px-24 overflow-hidden gap-10 lg:gap-0"
+    >
       {/* Background Image with Overlay
       
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -74,7 +96,7 @@ export default function Hero() {
 
       */}
       <div className="absolute inset-0 w-full h-full">
-        <img 
+        <img
           src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
           alt="Digital technology background"
           className="w-full h-full object-cover"
@@ -89,40 +111,46 @@ export default function Hero() {
 
       {/* Content Section */}
       <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center z-10 py-12 lg:py-0">
-        <motion.div 
+        <motion.div
           className="max-w-2xl space-y-8 text-center lg:text-left"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400"
             whileHover={{ scale: 1.02 }}
           >
             Digital Growth Engine For Businesses, Creators & Dreamers
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl text-gray-200"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            From first website to full digital transformation - we provide the tools, talent and ongoing support to help you thrive online.
+            From first website to full digital transformation - we provide the
+            tools, talent and ongoing support to help you thrive online.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <a href="#services" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-indigo-700 transition px-8 py-3.5 rounded-full text-white font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl">
+            <a
+              href="#services"
+              className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-indigo-700 transition px-8 py-3.5 rounded-full text-white font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl"
+            >
               Our Services <ArrowRight className="w-5 h-5" />
             </a>
             <button className="border-2 border-white/30 backdrop-blur-md hover:bg-white/10 hover:border-white/50 transition px-8 py-3.5 rounded-full font-semibold shadow-md flex items-center gap-2">
-            <Smartphone className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
-              <a href="#call" className="text-sm md:text-base">Schedule a Free Call</a>
+              <Smartphone className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
+              <a href="#call" className="text-sm md:text-base">
+                Schedule a Free Call
+              </a>
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-1 md:ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </button>
           </motion.div>
@@ -136,12 +164,12 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-full border-2 border-white/20 flex items-center justify-center">
             <div className="w-full h-full rounded-full border-2 border-white/10"></div>
           </div>
-          
+
           {/* Process Steps - Adjusted Left Position */}
           {processSteps.map((step, index) => {
             const { x, y } = calculatePosition(index);
             const isActive = index === activeStep;
-            
+
             return (
               <motion.div
                 key={index}
@@ -149,19 +177,19 @@ export default function Hero() {
                 style={{
                   left: `calc(50% + ${x}px)`,
                   top: `calc(50% + ${y}px)`,
-                  transform: 'translate(-50%, -50%)'
+                  transform: "translate(-50%, -50%)",
                 }}
                 animate={{
                   scale: isActive ? 1.2 : 0.9,
                   opacity: isActive ? 1 : 0.7,
-                  zIndex: isActive ? 20 : 10
+                  zIndex: isActive ? 20 : 10,
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <motion.div
-                  animate={{ 
+                  animate={{
                     scale: isActive ? 1.2 : 1,
-                    rotate: isActive ? [0, 10, -10, 0] : 0
+                    rotate: isActive ? [0, 10, -10, 0] : 0,
                   }}
                   transition={{ duration: 0.5 }}
                 >
@@ -170,7 +198,7 @@ export default function Hero() {
               </motion.div>
             );
           })}
-          
+
           {/* Center Display - Larger and More Visible */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 rounded-full bg-gradient-to-br from-purple-900/90 to-blue-900/90 shadow-2xl flex items-center justify-center z-0 backdrop-blur-sm border border-white/10">
             <AnimatePresence mode="wait">
@@ -182,8 +210,12 @@ export default function Hero() {
                 transition={{ duration: 0.5 }}
                 className="text-center p-6"
               >
-                <h3 className="font-bold text-lg lg:text-xl mb-2 text-white">{processSteps[activeStep].title}</h3>
-                <p className="text-sm lg:text-base text-white/90 leading-tight">{processSteps[activeStep].description}</p>
+                <h3 className="font-bold text-lg lg:text-xl mb-2 text-white">
+                  {processSteps[activeStep].title}
+                </h3>
+                <p className="text-sm lg:text-base text-white/90 leading-tight">
+                  {processSteps[activeStep].description}
+                </p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -222,10 +254,18 @@ export default function Hero() {
           animation-delay: 4s;
         }
         @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
         }
       `}</style>
     </section>

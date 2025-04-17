@@ -1,18 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import Ecosystem from './pages/Ecosystem';
-import Portfolio from './pages/Portfolio';
-import HowItWork from './pages/HowItWork';
-import DeveloperEcosystem from './pages/DeveloperEcosystem';
-import CTASection from './pages/CTASection';
-import Footer from './components/Footer';
-import './App.css';
-import { motion,  } from "framer-motion";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Ecosystem from "./pages/Ecosystem";
+import Portfolio from "./pages/Portfolio";
+import HowItWork from "./pages/HowItWork";
+import DeveloperEcosystem from "./pages/DeveloperEcosystem";
+import CTASection from "./pages/CTASection";
+import Footer from "./components/Footer";
+import "./App.css";
+import { motion } from "framer-motion";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,14 +25,14 @@ const ScrollToTopButton = () => {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -62,7 +61,10 @@ function App() {
 
   return (
     <Router>
-      <Navbar activeService={activeService} setActiveService={setActiveService} />
+      <Navbar
+        activeService={activeService}
+        setActiveService={setActiveService}
+      />
       <Routes>
         {/* <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -72,17 +74,20 @@ function App() {
         <Route path="/developer-ecosystem" element={<DeveloperEcosystem />} />
         <Route path="/contact" element={<CTASection />} /> */}
       </Routes>
-      
+
       {/* Single-page sections (if you're using this approach) */}
       <Home />
       <Services />
       <Ecosystem />
-      <HowItWork activeService={activeService} setActiveService={setActiveService} />
+      <HowItWork
+        activeService={activeService}
+        setActiveService={setActiveService}
+      />
       {/* <Portfolio /> */}
       <CTASection />
 
       <DeveloperEcosystem />
-      
+
       <Footer />
       <ScrollToTopButton />
     </Router>

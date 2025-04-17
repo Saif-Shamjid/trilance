@@ -84,7 +84,6 @@ export default function Navbar({ activeService, setActiveService }) {
                 className="w-60 h-10 object-contain rounded"
               />
             </div>
-            
           </button>
 
           {/* Navigation Links */}
@@ -201,42 +200,39 @@ export default function Navbar({ activeService, setActiveService }) {
                 <div className="flex flex-col space-y-4">
                   {navItems.map((item, index) => (
                     <div key={index} className="border-b border-white/10 pb-4">
-                      <button
+                      <a
                         className="flex items-center w-full text-left text-gray-300 hover:text-white transition"
-                        onClick={() =>
-                          item.href && handleSmoothScroll(item.href)
-                        }
+                        href={`#${item.href}`}
                       >
                         {item.icon}
                         <span className="ml-2">{item.name}</span>
-                      </button>
+                      </a>
 
                       {item.subItems && (
                         <div className="mt-2 ml-8 space-y-2">
                           {item.subItems.map((subItem, subIndex) => (
-                            <button
+                            <a
                               key={subIndex}
-                              onClick={() =>
-                                handleSmoothScroll(subItem.href, subItem.i)
-                              }
+                              href={`#${subItem.href}`}
+                              onClick={() => setActiveService(subItem.i)}
                               className="block w-full text-left py-2 text-gray-400 hover:text-white transition flex items-center"
                             >
                               <ArrowRight className="w-4 h-4 mr-2 text-purple-400" />
                               {subItem.name}
-                            </button>
+                            </a>
                           ))}
                         </div>
                       )}
                     </div>
                   ))}
 
-                  <button
-                    onClick={() => handleSmoothScroll("call")}
+                  <a
+                    href="#call"
                     className="px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium shadow-lg hover:shadow-xl transition-all flex items-center justify-center mt-4"
                   >
                     Get Started
                     <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>
